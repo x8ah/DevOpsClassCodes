@@ -20,7 +20,7 @@ spec:
         app: kubeserve
     spec:
       containers:
-      - image: javanogeda254/simplexapp
+      - image: javanogeda254/simplexapp:v1
         name: app
 
 ---
