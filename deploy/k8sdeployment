@@ -1,9 +1,10 @@
+
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: simplexapp
+  name: kubeserve
 spec:
-  replicas: 10
+  replicas: 5
   minReadySeconds: 45 # wait for 10 sec before pod is ready going to next
   strategy:
     type: RollingUpdate
@@ -12,26 +13,26 @@ spec:
       maxSurge: 2        # bring one at a time
   selector:
     matchLabels:
-      app: simplexapp
+      app: kubeserve
   template:
     metadata:
-      name: simplexapp
+      name: kubeserve
       labels:
-        app: simplexapp
+        app: kubeserve
     spec:
       containers:
-      - image: javanogeda254/simplexapp:v1
+      - image: javanogeda254/kubeserve:v1
         name: app
 
 ---
 kind: Service
 apiVersion: v1
 metadata:
-   name: simplexapp-svc
+   name: kubeserve-svc
 spec:
   type: NodePort
   selector: 
-    app: simplexapp
+    app: kubeserve
   ports:
-    - port: 8080
-      targetPort: 8080
+    - port: 80
+      targetPort: 80
