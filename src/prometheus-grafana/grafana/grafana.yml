@@ -19,7 +19,7 @@ spec:
      spec:
        containers:
          - name: grafana
-           image: lerndevops/grafana
+           image: javanogeda254/grafana
            ports:
             - containerPort: 3000
 
